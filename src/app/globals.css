@@ -1,26 +1,101 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ---------- Design tokens (from Figma) ---------- */
+@theme {
+  --color-background: #100402;
+  --color-gold: #ebb811;
+  --color-foreground: #ffffff;          /* placeholder: confirm body text color */
+  --color-accent: #e2604b;   /* coral CTA (sampled from screenshot; confirm in Figma) */
+  --border-width-hairline: 0.5px;
+  --color-cream: #f7efe7;
+  --color-terracotta: #bb6645;
+  --color-peach: #eed3be;
+  
+    --color-ivory: #f4efe8;   /* light section background */
+  --color-ink: #100402;     /* dark text on light sections */
+  --font-script: var(--font-handwriting), cursive;
+
+  
+  
+  /* Fonts get wired here once we add them via next/font */
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), ui-serif, Georgia, serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    @apply bg-background text-foreground font-sans;
+    min-height: 100dvh;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-background);
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--color-gold);
+    outline-offset: 3px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------- Gold surface (buttons, badges) ---------- */
+/* The radial highlight is listed first so it sits ON TOP of the gold */
+@utility bg-gold-glow {
+  background:
+    radial-gradient(50% 50% at 50% 0%, rgb(255 255 255 / 0.3) 0%, rgb(255 255 255 / 0) 100%),
+    var(--color-gold);
+}
+
+@utility border-hairline {
+  border-width: var(--border-width-hairline);
+  border-style: solid;
+}
+
+@utility link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.5s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s;
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+
+/* ---------- Lenis smooth scroll ---------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
