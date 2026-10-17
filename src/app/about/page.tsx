@@ -20,7 +20,7 @@ export default function AboutPage() {
       <AboutStory />
       <OurStory />
       <VisionMission />
-      <Materials />
+          <Materials data={aboutPage.materials} />
          <ValuesSection id="approach" data={aboutPage.approach} />
     </>
   );

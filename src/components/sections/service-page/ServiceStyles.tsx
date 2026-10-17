@@ -52,9 +52,11 @@ function StyleCollage({
               lines={[style.title]}
               className="mt-4 font-display text-2xl text-terracotta xl:text-[28px]"
             />
-            <Reveal delay={0.1}>
-              <p className="mt-1 text-base">{style.subtitle}</p>
-            </Reveal>
+                       {style.subtitle && (
+              <Reveal delay={0.1}>
+                <p className="mt-1 max-w-[290px] text-base leading-snug">{style.subtitle}</p>
+              </Reveal>
+            )}
           </div>
 
           {style.images.slice(0, 3).map((img, i) => (

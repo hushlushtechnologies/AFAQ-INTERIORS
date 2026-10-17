@@ -2,12 +2,20 @@
 import { useId, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView, useReducedMotion } from "motion/react";
 import { ease } from "@/lib/motion";
-import { aboutPage } from "@/content/about-page";
 import { Container } from "@/components/ui/Container";
 import { PlusMinus } from "@/components/ui/PlusMinus";
 import { ImageReveal } from "@/components/motion/ImageReveal";
 
-type Item = (typeof aboutPage.materials.items)[number];
+// Remove: import { aboutPage } from "@/content/about-page";
+// Remove: type Item = (typeof aboutPage.materials.items)[number];
+
+export type MaterialItem = {
+  title: string;
+  text: string;
+  image: string;
+  detail: { src: string; alt: string };
+};
+ 
 const pad = (n: number) => String(n).padStart(2, "0");
 
 function MaterialRow({
@@ -17,7 +25,7 @@ function MaterialRow({
   onToggle,
   baseId,
 }: {
-  item: Item;
+  item: MaterialItem;
   index: number;
   isOpen: boolean;
   onToggle: () => void;
@@ -136,7 +144,7 @@ function MaterialRow({
   );
 }
 
-export function MaterialsAccordion() {
+export function MaterialsAccordion({ items }: { items: readonly MaterialItem[] }) {
   const baseId = useId();
   const [open, setOpen] = useState<Set<number>>(() => new Set([0]));
 
@@ -150,7 +158,7 @@ export function MaterialsAccordion() {
 
   return (
     <div className="relative">
-      {aboutPage.materials.items.map((item, i) => (
+        {items.map((item, i) => (
         <MaterialRow
           key={item.title}
           item={item}

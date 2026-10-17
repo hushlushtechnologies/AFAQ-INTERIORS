@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Rail } from "@/components/motion/Rail";
 import { StepDots } from "@/components/motion/StepDots";
 
-export function SolutionIndex({ solutions }: { solutions: readonly Solution[] }) {
+export function SolutionIndex({ solutions, label = "Solutions" }: { solutions: readonly Solution[]; label?: string }) {
   const lenis = useLenis();
   const rows: Solution[][] = [];
   for (let i = 0; i < solutions.length; i += 4) rows.push(solutions.slice(i, i + 4));
@@ -18,7 +18,7 @@ export function SolutionIndex({ solutions }: { solutions: readonly Solution[] })
   };
 
   return (
-    <nav aria-label="Interior solutions">
+    <nav aria-label={label}>
       {rows.map((row, r) => (
         <div key={r} className={r > 0 ? "mt-[50px]" : undefined}>
           <Rail />

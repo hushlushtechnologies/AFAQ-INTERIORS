@@ -40,7 +40,8 @@ export function StyleBanner({ style, index, total }: Props) {
           <div>
             <StepDots total={total} active={index} inactiveClassName="bg-white" className="justify-center" delay={0.9} />
             <h3 className="mt-4 font-display text-2xl text-gold xl:text-[30px]">{style.title}</h3>
-            <p className="mt-1 text-base">{style.subtitle}</p>
+            {/* <p className="mt-1 text-base">{style.subtitle}</p> */}
+                        {style.subtitle && <p className="mx-auto mt-1 max-w-[320px] text-base leading-snug">{style.subtitle}</p>}
           </div>
         </motion.div>
       </motion.div>
@@ -82,7 +83,7 @@ export function StyleCard({ style, index, total, delay = 0 }: Props) {
           <h3 className="mt-3 font-display text-xl text-gold transition-transform duration-500 group-hover:-translate-y-1 xl:text-[26px]">
             {style.title}
           </h3>
-          <p className="mt-1 text-sm xl:text-[15px]">{style.subtitle}</p>
+               {style.subtitle && <p className="mt-1 text-sm xl:text-[15px]">{style.subtitle}</p>}
         </div>
       </motion.div>
     </div>

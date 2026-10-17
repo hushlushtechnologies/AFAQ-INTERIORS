@@ -2,12 +2,13 @@ import Link from "next/link";
 import type { ComponentProps } from "react";
 import { cn } from "@/lib/utils";
 
-type Variant = "light" | "accent" | "outline";
+type Variant = "light" | "accent" | "outline" | "outlineLight";
 
 const styles: Record<Variant, { base: string; fill: string; hoverText: string }> = {
-  light:   { base: "bg-white text-accent",             fill: "bg-accent", hoverText: "group-hover:text-white" },
-  accent:  { base: "bg-accent text-white",             fill: "bg-white",  hoverText: "group-hover:text-accent" },
-  outline: { base: "border border-accent text-accent", fill: "bg-accent", hoverText: "group-hover:text-white" },
+  light:        { base: "bg-white text-accent",              fill: "bg-accent", hoverText: "group-hover:text-white" },
+  accent:       { base: "bg-accent text-white",              fill: "bg-white",  hoverText: "group-hover:text-accent" },
+  outline:      { base: "border border-accent text-accent",  fill: "bg-accent", hoverText: "group-hover:text-white" },
+  outlineLight: { base: "border border-cream/80 text-gold",  fill: "bg-gold",   hoverText: "group-hover:text-ink" }, // ← NEW: for dark backgrounds
 };
 
 type Props = Omit<ComponentProps<typeof Link>, "className"> & {

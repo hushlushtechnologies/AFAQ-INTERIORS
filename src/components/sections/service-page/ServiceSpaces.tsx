@@ -15,10 +15,15 @@ export function ServiceSpaces({ data }: { data: Spaces }) {
     const pairs: Solution[][] = [];
   for (let i = 0; i < data.solutions.length; i += 2) pairs.push(data.solutions.slice(i, i + 2));
 
+    const endsDark = pairs[pairs.length - 1]?.[0].theme === "dark";
+
   return (
     <section
       aria-labelledby="spaces-heading"
-      className="relative overflow-x-clip bg-ivory pb-24 pt-16 text-ink md:pb-32 xl:pb-[200px] xl:pt-[120px]"
+            className={cn(
+        "relative overflow-x-clip bg-ivory pt-16 text-ink xl:pt-[120px]",
+        !endsDark && "pb-24 md:pb-32 xl:pb-[200px]",
+      )}
     >
       <ColumnLines lineClassName="bg-terracotta/30" />
 
@@ -63,7 +68,7 @@ export function ServiceSpaces({ data }: { data: Spaces }) {
 
       {/* ---------- Index ---------- */}
       <div className="relative mt-20 lg:mt-[120px]">
-        <SolutionIndex solutions={data.solutions} />
+             <SolutionIndex solutions={data.solutions} label={data.eyebrow} />
       </div>
 
       {/* ---------- Solutions ---------- */}
@@ -90,7 +95,8 @@ export function ServiceSpaces({ data }: { data: Spaces }) {
               key={pair[0].id}
               className={cn(
                 dark && "bg-background py-24 text-cream lg:py-[240px]",
-                !dark && p > 0 && "pt-24 lg:pt-[165px]",
+                // Light pairs only need top space when coming out of a dark band
+                !dark && p > 0 && pairs[p - 1][0].theme === "dark" && "pt-24 lg:pt-[165px]",
                 !dark && p < pairs.length - 1 && "pb-24 lg:pb-[160px]",
               )}
             >

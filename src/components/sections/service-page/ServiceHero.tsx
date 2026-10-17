@@ -8,8 +8,9 @@ import { StepDots } from "@/components/motion/StepDots";
 import type { ServicePage } from "@/content/service-pages";
 import { contactHref } from "@/content/navigation";
 import { ServiceHeroImage } from "./ServiceHeroImage";
+import type { GridService } from "@/content/service-pages";
 
-export function ServiceHero({ data }: { data: ServicePage }) {
+export function ServiceHero({ data }: { data: GridService }) {
   return (
     <section
       aria-labelledby="service-title"
@@ -66,7 +67,14 @@ export function ServiceHero({ data }: { data: ServicePage }) {
           </Reveal>
           <Reveal delay={0.15} className="mt-6 flex flex-wrap gap-4 md:gap-6">
             <Button href={contactHref} variant="accent">{data.primaryCta}</Button>
-            <Button href="/gallery" variant="outline">Explore Our Work</Button>
+            {/* <Button href="/gallery" variant="outline">Explore Our Work</Button> */}
+                        <Button
+              href={data.secondaryCta?.href ?? "/gallery"}
+              variant="outline"
+              {...(data.secondaryCta?.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            >
+              {data.secondaryCta?.label ?? "Explore Our Work"}
+            </Button>
           </Reveal>
         </div>
       </Container>

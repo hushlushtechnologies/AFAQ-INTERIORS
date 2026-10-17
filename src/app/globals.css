@@ -22,6 +22,10 @@
   --font-display: var(--font-heading), ui-serif, Georgia, serif;
 }
 
+html[data-intro="skip"] .preloader {
+  display: none;
+}
+
 /* ---------- Base ---------- */
 @layer base {
   html {
@@ -97,5 +101,11 @@ html.lenis body {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
   }
 }

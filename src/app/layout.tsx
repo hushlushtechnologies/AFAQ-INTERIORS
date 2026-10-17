@@ -4,6 +4,7 @@ import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { Navbar } from "@/components/layout/Navbar";
 import { Caveat , Gloock, Public_Sans } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
+import { IntroProvider } from "@/components/layout/Preloader";
 
 export const metadata: Metadata = {
   title: {
@@ -21,15 +22,36 @@ const script = Caveat({ subsets: ["latin"], variable: "--font-handwriting", disp
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${body.variable} ${heading.variable} ${script.variable}`}>
+    // <html lang="en" className={`${body.variable} ${heading.variable} ${script.variable}`}>
 
+    //   <body>
+    //     <SmoothScroll>
+    //       <Navbar />
+    //       {children}
+    //       <Footer />
+    //     </SmoothScroll>
+    //   </body>
+    // </html>
+
+        <html lang="en" className={`${body.variable} ${heading.variable} ${script.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Runs before paint: skip the intro if already seen this session (no flash) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(sessionStorage.getItem("afaq-intro"))document.documentElement.dataset.intro="skip"}catch(e){}`,
+          }}
+        />
+      </head>
       <body>
         <SmoothScroll>
-          <Navbar />
-          {children}
-          <Footer />
+          <IntroProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </IntroProvider>
         </SmoothScroll>
       </body>
     </html>
+    
   );
 }
