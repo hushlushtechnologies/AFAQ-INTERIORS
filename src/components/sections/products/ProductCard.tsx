@@ -35,7 +35,7 @@ export function ProductCard({ product, index, total, delay = 0, sizes, className
     >
       <Link
         ref={ref}
-        href={`/products/${product.slug}`}
+        href={`/services/interior-design`}
         className={cn("group relative isolate block overflow-hidden", aspect)}
       >
         {/* Photo: parallax drift, reveal zoom, hover zoom */}

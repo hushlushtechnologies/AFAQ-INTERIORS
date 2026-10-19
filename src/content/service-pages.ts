@@ -847,31 +847,31 @@ export const servicePages: Record<string, ServicePage> = {
         // Placeholder descriptions below: replace with final copy
         {
           title: "System Coordination",
-          text: "MEP services are coordinated with structure, ceilings, joinery, and finishes to avoid clashes and keep every system working together.",
+          text: "MEP systems are coordinated with ceilings, lighting, joinery, kitchens, bathrooms, furniture layouts, and architectural elements.",
           image: "/images/services/mep/process/coordination.png",
           detail: { src: "/images/services/mep/process/coordination-detail.png", alt: "Engineers reviewing a 3D services model" },
         },
         {
           title: "Cost Estimation",
-          text: "Clear estimates for equipment, materials, and labour help plan budgets and support informed decisions before work begins.",
+          text: "We support project planning with clear technical scope, material requirements, and estimated implementation costs.",
           image: "/images/services/mep/process/estimation.png",
           detail: { src: "/images/services/mep/process/estimation-detail.png", alt: "Engineer calculating costs over technical drawings" },
         },
         {
           title: "Installation & Execution",
-          text: "Our site teams install and connect systems to the approved drawings, working in close coordination with other trades.",
+          text: "Our teams coordinate installation of HVAC, electrical, plumbing, lighting, and supporting systems according to the approved design.",
           image: "/images/services/mep/process/installation.png",
           detail: { src: "/images/services/mep/process/installation-detail.png", alt: "Technician installing ceiling services on site" },
         },
         {
           title: "Testing & Quality Checks",
-          text: "Systems are tested, commissioned, and checked against specifications to confirm safe and reliable performance.",
+          text: "Systems are inspected and tested to identify issues, confirm functionality, and support a smooth final handover.",
           image: "/images/services/mep/process/testing.png",
           detail: { src: "/images/services/mep/process/testing-detail.png", alt: "Inspector completing a quality checklist" },
         },
         {
           title: "Documentation & Handover",
-          text: "As-built drawings, manuals, and warranties are handed over so your systems can be operated and maintained with confidence.",
+          text: "Final technical information, project records, inspection details, and handover documentation are coordinated at project completion.",
           image: "/images/services/mep/process/handover.png",
           detail: { src: "/images/services/mep/process/handover-detail.png", alt: "Handover documents being signed" },
         },

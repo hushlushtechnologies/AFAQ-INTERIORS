@@ -40,10 +40,10 @@ export const footerColumns = [
   {
     title: "What We Do",
     links: [
-      { label: "Kitchen", href: "/products/kitchen" },
-      { label: "Bedroom", href: "/products/bedroom" },
-      { label: "Living", href: "/products/living" },
-      { label: "Dining", href: "/products/dining" },
+      { label: "Kitchen", href: "/services/interior-design" },
+      { label: "Bedroom", href: "/services/interior-design" },
+      { label: "Living", href: "/services/interior-design" },
+      { label: "Dining", href: "/services/interior-design" },
     ],
   },
 ];

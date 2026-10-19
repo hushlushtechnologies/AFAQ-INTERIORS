@@ -76,25 +76,25 @@ export const aboutPage = {
       // Placeholder descriptions below — replace with final copy
       {
         title: "Metal",
-        text: "Brushed, powder-coated, and plated metal details that bring precision and a refined contemporary edge.",
+        text: "Brass, bronze, stainless steel, and refined metal accents used to create contrast and precision.",
         image: "/images/about-page/materials/metal-1.jpg",
         detail: { src: "/images/about-page/materials/metal-2.jpg", alt: "Detail of architectural metalwork" },
       },
       {
         title: "Textiles",
-        text: "Upholstery, curtains, rugs, and soft furnishings selected for comfort, warmth, and longevity.",
+        text: "Fabrics, curtains, upholstery, and soft finishes that bring comfort, warmth, and personality.",
         image: "/images/about-page/materials/textiles-1.jpg",
         detail: { src: "/images/about-page/materials/textiles-2.jpg", alt: "Close-up of upholstery fabrics" },
       },
       {
         title: "Glass",
-        text: "Clear, fluted, frosted, and tinted glass that shapes light, openness, and privacy.",
+        text: "Clear, tinted, textured, and architectural glass used to shape openness, light, and detail.",
         image: "/images/about-page/materials/glass-1.jpg",
         detail: { src: "/images/about-page/materials/glass-2.jpg", alt: "Detail of a glass ceiling structure" },
       },
       {
         title: "Lighting",
-        text: "Layered architectural, decorative, and ambient lighting designed to set the mood of every space.",
+        text: "Layered lighting solutions that enhance materials, mood, and the overall spatial experience.",
         image: "/images/about-page/materials/lighting-1.jpg",
         detail: { src: "/images/about-page/materials/lighting-2.jpg", alt: "Decorative pendant light in a dark interior" },
       },
