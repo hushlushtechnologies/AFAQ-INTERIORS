@@ -14,7 +14,7 @@ Cinematic motion · editorial typography · built to industry standards
 
 </div>
 
----
+---_
 
 ## Table of contents
 
