@@ -1,8 +1,7 @@
-
-"use client";
+ "use client";
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useInView, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useInView, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 import { ease } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
@@ -42,11 +41,17 @@ export function WorkTile({
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const imageY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
-  const circleX = useTransform(
+
+  // Circle travels a full diameter each way, smoothed with a spring
+  const circleTravel = useTransform(
     scrollYProgress,
     [0, 1],
-    circle === "left" ? ["-40%", "40%"] : ["40%", "-40%"],
+    circle === "left" ? [-100, 100] : [100, -100], // % of the circle's own width
   );
+  const circleSpring = useSpring(circleTravel, { stiffness: 70, damping: 22, mass: 0.6 });
+  const circleX = useTransform(circleSpring, (v) => `${v}%`);
+  // Gentle breathing: slightly smaller at the edges of the scroll, full size in the middle
+  const circleScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.88, 1, 0.88]);
 
   return (
     <div ref={ref} className={className}>
@@ -82,10 +87,11 @@ export function WorkTile({
               "absolute top-0 aspect-square h-full rounded-full bg-terracotta",
               circle === "left" ? "left-0" : "right-0",
             )}
-            style={reduce ? undefined : { x: circleX }}
-            initial={reduce ? false : { scale: 0 }}
-            animate={show ? { scale: 1 } : undefined}
-            transition={{ duration: 1, ease: ease.out, delay: delay + 0.4 }}
+            // Scroll controls position + size; the entrance is a simple fade
+            style={reduce ? undefined : { x: circleX, scale: circleScale }}
+            initial={reduce ? false : { opacity: 0 }}
+            animate={show ? { opacity: 1 } : undefined}
+            transition={{ duration: 0.8, ease: ease.out, delay: delay + 0.4 }}
           />
         )}
       </motion.div>

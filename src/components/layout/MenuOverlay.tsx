@@ -8,7 +8,7 @@ import { legalLinks, navLinks } from "@/content/navigation";
 import { Container } from "@/components/ui/Container";
 import { ServicesPanel } from "./ServicesPanel";
 
-const linkText = "font-display text-4xl leading-tight text-foreground md:text-5xl xl:text-[56px]";
+const linkText = "font-display   text-4xl leading-tight text-foreground md:text-5xl xl:text-[56px]";
 
 const reveal = (i: number) => ({
   initial: { y: "110%" },
@@ -44,7 +44,7 @@ export function MenuOverlay({ onClose }: { onClose: () => void }) {
                   onPointerEnter={isServices ? (e) => e.pointerType === "mouse" && setServicesOpen(true) : undefined}
                   onPointerLeave={isServices ? (e) => e.pointerType === "mouse" && setServicesOpen(false) : undefined}
                 >
-                  <div className="overflow-hidden pb-1">
+                                    <div className="overflow-y-clip pb-[0.15em] pr-4">
                     <motion.div {...reveal(i)}>
                       {isServices ? (
                         <button

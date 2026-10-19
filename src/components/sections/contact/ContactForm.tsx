@@ -1,10 +1,12 @@
 "use client";
-import { useActionState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useActionState, useCallback, useEffect, useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import { ease } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import { contact } from "@/content/contact";
 import { sendEnquiry, type EnquiryState } from "@/app/contact/actions";
+import { FormResultModal } from "./FormResultModal";
+import { PhoneField } from "./PhoneField";
 
 const initial: EnquiryState = { status: "idle" };
 const control =
@@ -50,6 +52,18 @@ export function ContactForm() {
   const e = state.errors ?? {};
   const v = state.values ?? {};
 
+  // Result modal
+  const [modal, setModal] = useState<null | "success" | "error">(null);
+  const closeModal = useCallback(() => setModal(null), []);
+
+  // Each submission returns a new state object → open the right modal
+  useEffect(() => {
+    if (state.status === "success") setModal("success");
+    else if (state.status === "error" && !state.errors) setModal("error"); // sending failed
+  }, [state]);
+
+  const hasFieldErrors = state.status === "error" && !!state.errors;
+
   const a11y = (name: keyof typeof e) =>
     e[name] ? { "aria-invalid": true, "aria-describedby": `cf-${name}-error` } : {};
 
@@ -61,10 +75,13 @@ export function ContactForm() {
           defaultValue={v.name} className={control} {...a11y("name")} />
       </Row>
 
-      <Row index={1} id="cf-phone" error={e.phone}>
-        <label htmlFor="cf-phone" className="sr-only">Phone number</label>
-        <input id="cf-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" required
-          placeholder="Phone Number" defaultValue={v.phone} className={control} {...a11y("phone")} />
+         <Row index={1} id="cf-phone">
+        <PhoneField
+          defaultCountry={v.phoneCountry}
+          defaultValue={v.phone}
+          serverError={e.phone}
+          inputClassName={control}
+        />
       </Row>
 
       <Row index={2} id="cf-email" error={e.email}>
@@ -105,7 +122,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={pending}
-        className="mt-14 inline-flex w-full cursor-pointer items-center justify-center gap-3 rounded-full py-3.5 text-base font-medium text-white transition-[filter,opacity] duration-300 [background:radial-gradient(50%_50%_at_50%_0%,rgb(255_255_255/0.25),transparent),var(--color-accent)] hover:brightness-110 disabled:cursor-wait disabled:opacity-75 md:text-lg"
+        className="mt-14 inline-flex w-full cursor-pointer items-center justify-center gap-3 rounded-full py-3.5 text-base font-medium text-white transition-[filter,opacity] duration-300  btn-accent hover:brightness-110 disabled:cursor-wait disabled:opacity-75 md:text-lg"
       >
         {pending && (
           <svg aria-hidden viewBox="0 0 24 24" className="size-5 animate-spin fill-none stroke-current stroke-2">
@@ -115,24 +132,22 @@ export function ContactForm() {
         {pending ? "Sending…" : "Send Enquiry"}
       </button>
 
-      <div role="status" aria-live="polite" className="mt-5 min-h-6">
-        <AnimatePresence mode="wait">
-          {state.status !== "idle" && !pending && (
-            <motion.p
-              key={state.status + (state.message ?? "")}
-              className={cn("text-center text-base", state.status === "success" ? "text-ink" : "text-accent")}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4, ease: ease.out }}
-            >
-              {state.status === "success"
-                ? "Thank you — we’ve received your enquiry and will be in touch shortly."
-                : state.message}
-            </motion.p>
-          )}
-        </AnimatePresence>
-      </div>
+      {/* Field mistakes only: short inline hint (details sit under each field) */}
+      <p role="status" aria-live="polite" className="mt-5 min-h-6 text-center text-sm text-accent">
+        {hasFieldErrors && !pending ? state.message : ""}
+      </p>
+
+      {/* Success / sending-failed popup */}
+      <FormResultModal
+        open={modal !== null}
+        kind={modal ?? "success"}
+        message={
+          modal === "error"
+            ? state.message ?? "Please try again in a moment, or call us directly."
+            : "We’ve received your enquiry and our team will be in touch shortly."
+        }
+        onClose={closeModal}
+      />
     </form>
   );
 }

@@ -35,7 +35,7 @@ export function FaqSection({ items, id = "faq", title = ["Frequently", "Asked", 
       aria-labelledby={headingId}
       className="relative overflow-hidden bg-ivory py-24 text-ink md:py-32 xl:py-[150px]"
     >
-      <BlueprintBackdrop src="/images/faq/sketch.jpg" imageClassName="opacity-60" overlayClassName="bg-ivory/30" />
+      <BlueprintBackdrop src="/images/faq/sketch.svg" imageClassName="opacity-80" overlayClassName="bg-ivory/30" />
 
       <Container className="relative z-10">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">

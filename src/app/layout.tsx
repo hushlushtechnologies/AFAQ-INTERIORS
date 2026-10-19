@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { Navbar } from "@/components/layout/Navbar";
-import { Caveat , Gloock, Public_Sans } from "next/font/google";
+import { Caveat , Fraunces, Gloock, Public_Sans } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { IntroProvider } from "@/components/layout/Preloader";
 
@@ -16,8 +16,15 @@ export const metadata: Metadata = {
 };
 
 const body = Public_Sans({ subsets: ["latin"], variable: "--font-body", display: "swap" });
-const heading = Gloock({ subsets: ["latin"], weight: "400", variable: "--font-heading", display: "swap" });
+// const heading = Gloock({ subsets: ["latin"], weight: "400", variable: "--font-heading", display: "swap" });
+const heading = Fraunces({
+  subsets: ["latin"],
+  weight: ["300", "400"],
+  variable: "--font-heading",
+  display: "swap",
+});
 const script = Caveat({ subsets: ["latin"], variable: "--font-handwriting", display: "swap" });
+
 
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

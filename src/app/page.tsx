@@ -24,7 +24,7 @@ export default function HomePage() {
       <SignatureSection />
       <ProcessSection />
       <ValuesSection data={values} />
-          <FaqSection items={faq.items} title={faq.title} />
+      <FaqSection items={faq.items} title={faq.title} />
     </>
   );
 }

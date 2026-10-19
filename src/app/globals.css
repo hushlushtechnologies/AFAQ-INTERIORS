@@ -5,12 +5,12 @@
   --color-background: #100402;
   --color-gold: #ebb811;
   --color-foreground: #ffffff;          /* placeholder: confirm body text color */
-  --color-accent: #e2604b;   /* coral CTA (sampled from screenshot; confirm in Figma) */
+   --color-accent: #dd6550;  /* coral CTA (sampled from screenshot; confirm in Figma) */
   --border-width-hairline: 0.5px;
   --color-cream: #f7efe7;
   --color-terracotta: #bb6645;
   --color-peach: #eed3be;
-  
+    --color-terracotta: #b56545; /* Figma: Secondary */
     --color-ivory: #f4efe8;   /* light section background */
   --color-ink: #100402;     /* dark text on light sections */
   --font-script: var(--font-handwriting), cursive;
@@ -51,6 +51,15 @@ html[data-intro="skip"] .preloader {
     outline-offset: 3px;
   }
 }
+
+/* Coral button: solid fill + top glow + fading 0.5px border (Figma) */
+/* @utility btn-accent {
+  border: 0.5px solid transparent;
+  background:
+    radial-gradient(50% 50% at 50% 0%, rgb(255 255 255 / 0.3) 0%, rgb(255 255 255 / 0) 100%) padding-box,
+    linear-gradient(var(--color-accent), var(--color-accent)) padding-box,
+    radial-gradient(50% 93.75% at 50% 6.25%, #b56545 0%, rgb(255 255 255 / 0) 100%) border-box;
+} */
 
 /* ---------- Gold surface (buttons, badges) ---------- */
 /* The radial highlight is listed first so it sits ON TOP of the gold */
@@ -107,5 +116,16 @@ html.lenis body {
 @keyframes marquee {
   to {
     transform: translateX(-50%);
+  }
+}
+
+/* Coral button: solid fill + top glow + fading 0.5px border (Figma) */
+@layer components {
+  .btn-accent {
+    border: 0.5px solid transparent;
+    background:
+      radial-gradient(50% 50% at 50% 0%, rgb(255 255 255 / 0.3) 0%, rgb(255 255 255 / 0) 100%) padding-box,
+      linear-gradient(var(--color-accent), var(--color-accent)) padding-box,
+      radial-gradient(50% 93.75% at 50% 6.25%, #b56545 0%, rgb(255 255 255 / 0) 100%) border-box;
   }
 }

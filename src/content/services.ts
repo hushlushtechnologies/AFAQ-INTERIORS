@@ -57,7 +57,7 @@ export const mepService: Service = {
   items: ["Mechanical Engineering", "Electrical Solutions", "Plumbing Solutions", "HVAC Solutions", "Lighting & Technical Solutions", "Kitchen & Bathroom"],
   cta: "Explore MEP Solutions",
   href: "/services/mep",
-  image: "/images/services/mep.jpg",
+  image: "/images/services/property.jpg",
   alt: "Engineers in safety gear inspecting rooftop building services",
 };
 
@@ -66,6 +66,6 @@ export const propertyService: Service = {
   items: ["Interior Design", "Renovation", "Fit-Out", "Furnishing", "Space Planning"],
   cta: "Explore Property Transformation",
   href: "/services/property-transformation",
-  image: "/images/services/property.jpg",
+  image: "/images/services/mep.jpg",
   alt: "Couple in a renovated loft kitchen with exposed beams and skylights",
 };

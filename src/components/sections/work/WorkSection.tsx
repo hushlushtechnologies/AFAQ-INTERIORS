@@ -5,6 +5,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { work } from "@/content/work";
 import { contactHref } from "@/content/navigation";
 import { WorkTile } from "./WorkTile";
+ 
 
 const img = work.images;
 const WIDE = "(min-width: 1024px) 55vw, 100vw";

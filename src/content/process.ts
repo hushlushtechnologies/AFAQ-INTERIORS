@@ -1,4 +1,4 @@
-export const process = {
+ export const process = {
   title: "One Vision. One Team. Complete Delivery.",
   body: "From the first consultation to the final handover, Afaq Al Manzel Interiors brings design, engineering, execution, and furnishing together under one coordinated process.",
   steps: [
@@ -12,26 +12,25 @@ export const process = {
       subtitle: "Shape the Concept",
       text: "We translate your ideas into a clear design direction through planning, materials, finishes, lighting, and visual concepts.",
     },
-    // Placeholder copy below — replace with final text
     {
       title: "Engineer",
-      subtitle: "Plan the Technical Details",
-      text: "Our engineers coordinate MEP, structural requirements, approvals, and technical drawings so every design can be built precisely.",
+      subtitle: "Make It Buildable",
+      text: "Our technical team develops the drawings, MEP coordination, specifications, and documentation required to move confidently into execution.",
     },
     {
       title: "Build",
       subtitle: "Bring It to Life",
-      text: "Our site team manages construction, fit-out, and quality control, keeping your project on schedule and to specification.",
+      text: "Our execution team manages construction, fit-out, installation, and site coordination with close attention to quality and detail.",
     },
     {
       title: "Furnish",
       subtitle: "Complete the Experience",
-      text: "We source, customise, and install furniture, lighting, and accessories that bring the design together.",
+      text: "Furniture, lighting, fabrics, décor, and accessories are carefully selected and installed to complete the intended look and feel.",
     },
     {
       title: "Deliver",
-      subtitle: "Hand Over with Confidence",
-      text: "We finish with a detailed handover and snagging, so your space is ready to enjoy from day one.",
+      subtitle: "Ready to Experience",
+      text: "Every detail is reviewed before the space is handed over complete, refined, and ready to use.",
     },
   ],
   videos: [

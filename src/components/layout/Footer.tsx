@@ -17,8 +17,7 @@ const icon = "size-6 shrink-0 transition-colors duration-300 group-hover:text-ac
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-ivory text-ink">
-      <FooterBackdrop src="/images/footer/shapes.svg" />
-
+          <FooterBackdrop src="/images/footer/shapes.png" width={1920} height={1371} />
       <div className="relative z-10">
         {/* ---------- CTA ---------- */}
         <Container className="pt-24 text-center md:pt-32 xl:pt-[140px]">
@@ -64,7 +63,7 @@ export function Footer() {
               </p>
             </Reveal>
 
-            <div className="mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 xl:mt-[70px]">
+                       <div className="mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-[1fr_1.15fr_0.85fr_1.4fr] lg:gap-6 xl:mt-[70px]">
               {footerColumns.map((col, i) => (
                 <Reveal key={col.title} delay={i * 0.08}>
                   <nav aria-label={col.title}>
@@ -91,7 +90,7 @@ export function Footer() {
                   </a>
                   <a href={`mailto:${site.email}`} className="group flex items-center gap-5">
                     <MailIcon className={icon} />
-                    <span className="link-underline break-all">{site.email}</span>
+                                       <span className="link-underline [overflow-wrap:anywhere]">{site.email}</span>
                   </a>
                   <a href={site.mapHref} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-5">
                     <PinIcon className={icon} />
